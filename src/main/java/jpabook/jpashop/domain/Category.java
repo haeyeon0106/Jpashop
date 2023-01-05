@@ -18,6 +18,7 @@ public class Category {
 
     private String name;
 
+    // 다대다 방향(ManyToMany)는 사용하지 않는게 좋음
     @ManyToMany
     @JoinTable(name = "category_item",
             joinColumns = @JoinColumn(name = "category_id"),
@@ -25,11 +26,17 @@ public class Category {
     )  // 중간 테이블 매핑
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
+
+    //==연관관계 메소드==//
+    public void addChildCategory(Category child){
+        this.child.add(child);
+        child.setParent(this);
+    }
 
 }
