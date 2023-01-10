@@ -45,5 +45,6 @@ public abstract class Item {    // 구현체로 구현할 예정이기 때문에
         if(realStock < 0){
             throw new NotEnoughStockException("need more stock");
         }
+        this.stockQuantity = realStock;
     }
 }

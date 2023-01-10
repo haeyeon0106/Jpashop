@@ -20,7 +20,7 @@ public class MemberRepository {
 
     public Member findOne(Long id){
         return em.find(Member.class,id);
-    }
+    }   // em.find(엔티티 클래스 타입, 조회할 엔티티 식별자 값)
 
     public List<Member> findAll(){
         return em.createQuery("select m from Member m", Member.class)      // (JPQL,반환타입)

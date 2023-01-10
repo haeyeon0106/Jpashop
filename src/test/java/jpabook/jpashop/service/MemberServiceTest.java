@@ -3,15 +3,17 @@ package jpabook.jpashop.service;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@RunWith(SpringRunner.class)    // 이거 안적어줘서 NullPointerException 떴음
 @SpringBootTest
 @Transactional  // 기본적으로 Rollback
 public class MemberServiceTest {
