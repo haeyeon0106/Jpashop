@@ -1,24 +1,25 @@
 package jpabook.jpashop.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Entity
-@Getter @Setter
 public class Member {
 
-    @Id @GeneratedValue // sequence값
+    @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
+
+    @Column
     private String name;
 
-    @Embedded   // 내장타입
+    @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "member") // order 안의 member에 의해 mapping 됨(읽기전용)
-    private List<Order>orders = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 }

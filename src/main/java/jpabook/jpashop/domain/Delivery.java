@@ -13,12 +13,12 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
     private Order order;
 
-    @Embedded   // 내장타입이기 때문에
+    @Embedded
     private Address address;
 
-    @Enumerated(EnumType.STRING)    // ORDINAL은 숫자로 저장됨 => 다른 상태가 생성되면 꼬임
-    private DeliveryStatus status;  //READY(배송준비) COMP(배송중)
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status;      // READY,COMP
 }
